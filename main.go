@@ -40,59 +40,75 @@ func intro() {
 	switch choice {
 
 	case 1:
+
+		var base10, base int
+
 		F.Println("Please enter your value in base 10")
-		var base10 int
 		F.Scanln(&base10)
+
 		F.Println("Please enter the base you would like to convert to")
-		var base int
 		F.Scanln(&base)
+
 		F.Println("Your answer is", baseConverter(base10, base))
 
 	case 2:
-		F.Println("Please enter your value in it's base")
-		var base10 string
-		F.Scanln(&base10)
-		F.Println("Please enter the base you would like to convert to")
+
 		var base int
+		var base10 string
+
+		F.Println("Please enter your value in it's base")
+		F.Scanln(&base10)
+
+		F.Println("Please enter the base you would like to convert to")
 		F.Scanln(&base)
+
 		output, err := str.ParseUint(hexaToInteger(base10), base, 64)
+
 		if err != nil {
 			F.Println(err)
 			panic(err)
 		}
+
 		F.Println("Output is: ", output)
 
 	case 3:
+
+		var base, baseTwo, baseThree int
+		var base10, base10Two string
+
 		F.Println("Please enter your first value ")
-		var base10 string
 		F.Scanln(&base10)
+
 		F.Println("what base is this value in?")
-		var base int
 		F.Scanln(&base)
+
 		F.Println("Please enter your second value")
-		var base10Two string
 		F.Scanln(&base10Two)
+
 		F.Println("what base is this value in?")
-		var baseTwo int
 		F.Scanln(&baseTwo)
+
 		F.Println("what base would you like to convert to?")
-		var baseThree int
 		F.Scanln(&baseThree)
+
 		output, err := str.ParseUint(hexaToInteger(base10), base, 64)
+
 		if err != nil {
 			panic(err)
 		}
 		outputTwo, err := str.ParseUint(hexaToInteger(base10Two), baseTwo, 64)
+
 		if err != nil {
 			panic(err)
 		}
+
 		F.Println("Output is: ", int(output+outputTwo))
 		F.Println("Output is: ", baseConverter(int(output+outputTwo), baseThree))
 
 		// baseToBase10(2)
 	case 4:
 		F.Println("Goodbye")
-		break
+
 	default:
 		F.Println("Please enter a valid choice")
 	}
